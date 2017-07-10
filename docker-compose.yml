@@ -1,0 +1,26 @@
+version:   "3"
+services:
+  traefik:
+    image: traefik
+    command: --web --docker --docker.domain=docker.localhost --logLevel=DEBUG
+    networks:
+      - webgateway
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/dev/null:/traefik.toml"
+
+  webapp:
+    build: .
+    networks:
+      - webgateway
+    labels:
+      - "traefik.port=80"    
+      - "traefik.backend=webBack"
+      - "traefik.frontend.rule=Host:example.docker.localhost"
+
+
+networks:
+  webgateway:
