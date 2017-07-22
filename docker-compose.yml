@@ -21,7 +21,9 @@ services:
       - "traefik.backend=webBack"
       - "traefik.frontend.rule=Host:example.docker.localhost"
     environment:
-      - JAVA_OPTS=-Xmx50m -Xms50m
+      - JAVA_OPTS=-Xmx50m -Xms50m -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.rmi.port=1099 -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.local.only=false -Djava.rmi.server.hostname=0.0.0.0
+    ports:
+      - "1099:1099"
 
 networks:
   webgateway:

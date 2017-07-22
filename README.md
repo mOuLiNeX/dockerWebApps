@@ -15,6 +15,9 @@
   * Linux, ajouter cette ligne au fichier /etc/hosts file
 ```127.0.0.1 example.docker..localhost```
 
+### Connexion JMX
+
+Depuis JVisualVM ou JConsole sur l'adresse 0.0.0.0:1099
 
 ### Vérifier la mémoire au démarrage de la JVM (pour tester Xmx/Xms par exemple)
 ```
