@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 RUN mvn clean install package
 
 
-#FROM java:8-jdk-alpine as RUN
+FROM java:8-jdk-alpine as RUN
 
 COPY --from=BUILD /usr/src/app/target/context-0.0.1-SNAPSHOT.jar /opt/app/webapp.jar
 WORKDIR /opt/app
