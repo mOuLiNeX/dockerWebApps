@@ -20,7 +20,8 @@ services:
       - "traefik.port=80"    
       - "traefik.backend=webBack"
       - "traefik.frontend.rule=Host:example.docker.localhost"
-
+    environment:
+      - JAVA_OPTS=-Xmx50m -Xms50m
 
 networks:
   webgateway:

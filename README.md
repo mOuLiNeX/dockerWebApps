@@ -14,3 +14,9 @@
 ```127.0.0.1 example.docker..localhost```
   * Linux, ajouter cette ligne au fichier /etc/hosts file
 ```127.0.0.1 example.docker..localhost```
+
+
+### Vérifier la mémoire au démarrage de la JVM (pour tester Xmx/Xms par exemple)
+```
+ docker run -ti --rm openjdk:8-jre-alpine sh -c "java -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize'"
+```

@@ -8,9 +8,11 @@ WORKDIR /usr/src/app
 RUN mvn clean install package
 
 
-FROM java:8-jdk-alpine as RUN
+FROM openjdk:8-jre-alpine as RUN
 
 COPY --from=BUILD /usr/src/app/target/context-0.0.1-SNAPSHOT.jar /opt/app/webapp.jar
+COPY start.sh /opt/app/
+
 WORKDIR /opt/app
 
-ENTRYPOINT ["java", "-DPROD_MODE=true", "-jar", "webapp.jar"]
+ENTRYPOINT ["/opt/app/start.sh"]
